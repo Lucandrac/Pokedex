@@ -36,18 +36,21 @@ struct DetailPokemonView: View {
                 }
             }
             Spacer(minLength: 25)
-            Text(pokemon.types?.isEmpty == false ? pokemon.types!.joined(separator: ", ") : "types inconnues")
-                .frame(minHeight: 50, idealHeight: 100, maxHeight: .greatestFiniteMagnitude, alignment: .top)
+            List(pokemon.types, id: \.name){ type in
+                Text(type.name)
+                    .frame(minHeight: 50, idealHeight: 100, maxHeight: .greatestFiniteMagnitude, alignment: .top)
+            }
+            
 
         }
         .padding(10)
         .onAppear(){
-            imageLoader.load(pokemon.sprites.regular ?? "images")
+            imageLoader.load(pokemon.sprites.regular)
         }
     }
 }
 
-#Preview {
-    let pokemon:Pokemon = Pokemon(pokedexID: 1, generation: 1, category: "Pokémon feu", name: Name(fr: "Salamèche", en: "Charmander", jp: "e sais pas"), sprites: Sprites(regular: "https://raw.githubusercontent.com/Yarkis01/TyraDex/images/sprites/0/regular.png", shiny: nil, gmax: nil), types: nil, talents: nil, stats: nil, resistances: nil, evolution: nil, height: nil, weight: nil, eggGroups: nil, sexe: nil, catchRate: nil, level100: nil, formes: nil)
-    return DetailPokemonView(pokemon: pokemon)
-}
+//#Preview {
+//    let pokemon:Pokemon = Pokemon(pokedexID: 1, generation: 1, category: "Pokémon feu", name: Name(fr: "Salamèche", en: "Charmander", jp: "e sais pas"), sprites: Sprites(regular: "https://raw.githubusercontent.com/Yarkis01/TyraDex/images/sprites/0/regular.png", shiny: nil, gmax: nil), types: nil, talents: nil, stats: nil, resistances: nil, evolution: nil, height: nil, weight: nil, eggGroups: nil, sexe: nil, catchRate: nil, level100: nil, formes: nil)
+//    return DetailPokemonView(pokemon: pokemon)
+//}

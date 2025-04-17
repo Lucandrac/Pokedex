@@ -22,7 +22,7 @@ struct CellView: View {
                     Image(uiImage: imageLoader.image!)
                         .resizable()
                         .frame(width: 55, height: 55, alignment: .center)
-                        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                        .clipShape(Circle())
                         .overlay(Circle().stroke(Color.purple, lineWidth: 2))
                 }
                 
@@ -39,13 +39,13 @@ struct CellView: View {
             }
             .padding(5)
             .onAppear(){
-                imageLoader.load(pokemon.sprites.regular ?? "images")
+                imageLoader.load(pokemon.sprites.regular)
         }
         }
     }
 }
 
-#Preview {
-    let pokemon:Pokemon = Pokemon(pokedexID: 1, generation: 1, category: "Pokémon feu", name: Name(fr: "Salamèche", en: "Charmander", jp: "e sais pas"), sprites: Sprites(regular: "https://raw.githubusercontent.com/Yarkis01/TyraDex/images/sprites/0/regular.png", shiny: nil, gmax: nil), types: nil, talents: nil, stats: nil, resistances: nil, evolution: nil, height: nil, weight: nil, eggGroups: nil, sexe: nil, catchRate: nil, level100: nil, formes: nil)
-    return CellView(pokemon: pokemon)
-}
+//#Preview {
+//    let pokemon:Pokemon = Pokemon(pokedexID: 1, generation: 1, category: "Pokémon feu", name: Name(fr: "Salamèche", en: "Charmander", jp: "e sais pas"), sprites: Sprites(regular: "https://raw.githubusercontent.com/Yarkis01/TyraDex/images/sprites/0/regular.png", shiny: nil, gmax: nil), types: nil, talents: nil, stats: nil, resistances: nil, evolution: nil, height: nil, weight: nil, eggGroups: nil, sexe: nil, catchRate: nil, level100: nil, formes: nil)
+//    return CellView(pokemon: pokemon)
+//}
